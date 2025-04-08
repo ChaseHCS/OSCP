@@ -1,0 +1,33 @@
+🟢 Beginner (Easy) – Warm-Up
+These boxes help reinforce core enumeration and basic exploitation techniques.
+
+Box Name	Key Skills
+Lame	Basic SMB exploit
+Legacy	EternalBlue (MS17-010)
+Blue	EternalBlue (classic OSCP-style)
+Devel	Windows box + web shell upload
+Beep	Multi-service box, enumeration
+Jerry	Tomcat exploitation
+Shocker	Shellshock exploit
+Netmon	FTP + config file privesc
+🟡 Intermediate (Medium) – OSCP Core Skills
+These reflect the actual difficulty and logic of most OSCP exam machines.
+
+Box Name	Key Skills
+Arctic	ColdFusion + Windows enumeration
+Bashed	PHP-based web shell + privesc
+Nibbles	Exploit custom web app + local privesc
+Cronos	DNS + web + privesc
+Optimum	Exploit mini web server (HFS)
+Granny	IIS on Windows XP + known exploits
+Buff	CVE + reverse shell, similar to exam
+🔴 Advanced (Harder) – Realistic Exam Simulation
+Tackle these when you can consistently root the medium ones.
+
+Box Name	Key Skills
+Forest	Active Directory enumeration + BloodHound
+Active	SMB/LDAP enum + kerberos abuse
+Jeeves	Windows + secretsdump + privesc
+Valentine	Heartbleed + tunneling
+Cascade	AD enum + service account abuse
+Access	FTP + Keepass vault decryption
