@@ -6,6 +6,8 @@ PORT SCANNING
 
 Basic portscanning methodology is to do a light scan of everyport on machine or network first. Then continue with an aggressive scan on the open ports.
 
+autorecon == Runs both the light scan then the aggressive scan automatically. Highly effecient. Highly effective // https://github.com/Tib3rius/AutoRecon
+
 LIGHT BROAD SCANNING TOOLS
 
 rustscan -a <Target IP> == Scans all 65k ports in 3 seconds. // https://github.com/bee-san/RustScan
