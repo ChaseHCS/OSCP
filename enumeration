@@ -18,7 +18,7 @@ naabu == fast and lightweight port scanner written in go // https://github.com/p
 
 AGGRESSIVE TARGETED SCANNING TOOLS
 
-nmap -sC -sV -p (port,port,ports) <10.10.10.3>
+nmap -sC --script vuln -sV -p (port,port,ports) <10.10.10.3>
 
 SERVICE EXPLOIT SEARCHING
 
