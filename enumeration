@@ -14,6 +14,8 @@ masscan -p1-65535 <target-ip> --rate=1000 -e tun0 == Another fast but older scan
 
 scanless -s all <target-ip> == anonymous port scanner // 
 
+naabu == fast and lightweight port scanner written in go // https://github.com/projectdiscovery/naabu
+
 AGGRESSIVE TARGETED SCANNING TOOLS
 
 nmap -sC -sV -p (port,port,ports) <10.10.10.3>
