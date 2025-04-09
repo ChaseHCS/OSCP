@@ -1,0 +1,27 @@
+https://github.com/0xw0lf/0xw0lf-oscp
+
+https://github.com/Tib3rius/OSCP-Cheatsheet
+
+🔐 3. GTFOBins (Linux)
+URL: https://gtfobins.github.io
+
+Shows how to escalate privileges using legit Linux binaries
+
+🪟 4. LOLBAS (Windows)
+URL: https://lolbas-project.github.io
+
+Windows equivalent of GTFOBins—abuse legitimate tools for privilege escalation
+
+🧠 1. HackTricks
+URL: https://book.hacktricks.xyz
+
+Huge encyclopedia of offensive security techniques
+
+Covers initial access, privesc, lateral movement, web, buffer overflows, and more
+
+📂 2. PayloadsAllTheThings
+URL: https://github.com/swisskyrepo/PayloadsAllTheThings
+
+Best repository for payloads, techniques, and example commands
+
+Very helpful during enumeration, web exploitation, and privesc
