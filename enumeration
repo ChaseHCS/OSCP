@@ -1,0 +1,1 @@
+Command: nmap -sC -sV -T5 <Target IP> == Basic nmap scan.
