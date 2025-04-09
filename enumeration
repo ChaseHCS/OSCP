@@ -1,1 +1,16 @@
-Command: nmap -sC -sV -T5 <Target IP> == Basic nmap scan.
+PORT SCANNING
+
+Basic portscanning methodology is to do a light scan of everyport on machine or network first. Then continue with an aggressive scan on the open ports.
+
+LIGHT BROAD SCANNING TOOLS
+
+rustscan -a <Target IP> == Scans all 65k ports in 3 seconds.
+
+AGGRESSIVE TARGETED SCANNING TOOLS
+
+nmap -sC -sV -p (port,port,ports) <10.10.10.3>
+
+SERVICE EXPLOIT SEARCHING
+
+searchsploit 'Exploit name' 'Exploit version' == Looks for known exploits downloaded on Kali.
+
