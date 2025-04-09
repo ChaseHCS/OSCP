@@ -1,3 +1,7 @@
+PRE-SCANNING ACTIVITIES
+
+echo "10.10.10.4 legacy.htb" | sudo tee -a /etc/hosts == Add IP to hosts files to make enum more easy.
+
 PORT SCANNING
 
 Basic portscanning methodology is to do a light scan of everyport on machine or network first. Then continue with an aggressive scan on the open ports.
