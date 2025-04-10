@@ -1,3 +1,13 @@
+legend
+Service	Tools
+HTTP	gobuster, ffuf, nikto, curl, burp, whatweb
+SMB	enum4linux, smbclient, smbmap, crackmapexec
+LDAP	ldapsearch, GetNPUsers.py
+Kerberos	GetNPUsers.py, GetUserSPNs.py
+SSH	ssh, hydra, nmap -sV
+FTP	ftp, nmap, anonymous login
+RDP	rdesktop, xfreerdp, ncrack
+
                    +---------------------+
                    |     Start Recon     |
                    +---------------------+
