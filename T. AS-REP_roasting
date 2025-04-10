@@ -44,3 +44,11 @@
            | (GetUserSPNs.py)   |     | users with creds |
            +--------------------+     | (CrackMapExec)   |
                                       +------------------+
+
+
+Technique	Tool	Notes
+User enum	enum4linux, rpcclient, ldapsearch	Find AD users
+AS-REP Roasting	GetNPUsers.py (Impacket)	No creds needed for testing
+Hash Cracking	hashcat -m 18200	Crack AS-REP hashes
+Kerberoasting	GetUserSPNs.py	Requires valid domain creds
+Password Spraying	crackmapexec, hydra	Use user list + password list
