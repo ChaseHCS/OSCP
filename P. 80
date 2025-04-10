@@ -1,0 +1,40 @@
+CHATGPT Response
+
+usage
+
+chmod +x http_enum.sh
+./http_enum.sh <target-ip>
+
+script
+
+#!/bin/bash
+
+if [ -z "$1" ]; then
+    echo "Usage: $0 <target-ip>"
+    exit 1
+fi
+
+TARGET=$1
+OUTPUT_DIR="http_enum_$TARGET"
+mkdir -p "$OUTPUT_DIR"
+
+echo "[*] Step 1: Nmap scan on port 80..."
+nmap -p 80 -sV --script=http-title,http-headers,http-methods,http-enum -oN "$OUTPUT_DIR/nmap_http.txt" $TARGET
+
+echo "[*] Step 2: Curl headers and homepage..."
+curl -I http://$TARGET > "$OUTPUT_DIR/headers.txt"
+curl -s http://$TARGET > "$OUTPUT_DIR/index.html"
+
+echo "[*] Step 3: Checking robots.txt..."
+curl -s http://$TARGET/robots.txt > "$OUTPUT_DIR/robots.txt"
+
+echo "[*] Step 4: Directory brute force with gobuster..."
+gobuster dir -u http://$TARGET -w /usr/share/wordlists/dirb/common.txt -o "$OUTPUT_DIR/gobuster_common.txt"
+
+echo "[*] Step 5: Running Nikto (web vulnerability scanner)..."
+nikto -h http://$TARGET -o "$OUTPUT_DIR/nikto.txt"
+
+echo "[*] Step 6: CMS identification with WhatWeb..."
+whatweb http://$TARGET > "$OUTPUT_DIR/whatweb.txt"
+
+echo "[✓] Done. Results saved in $OUTPUT_DIR"
