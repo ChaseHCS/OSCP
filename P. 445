@@ -1,5 +1,10 @@
 CHATGPT Response
 
+usage
+
+chmod +x smb_enum.sh
+./smb_enum.sh <target-ip>
+
 #!/bin/bash
 
 if [ -z "$1" ]; then
