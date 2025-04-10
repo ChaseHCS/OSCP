@@ -1,1 +1,75 @@
+legend
 
+Goal	Tool(s)
+
+Auto enum	linpeas.sh, linenum.sh, pspy
+SUID abuse	find / -perm -4000, GTFOBins
+Cron / service abuse	crontab -l, systemctl list-timers
+PATH/LD exploit	Manual path hijack with custom binaries
+Kernel vulns	uname -a, linux-exploit-suggester.sh
+Config/creds/files	grep -ri password /, ls -la
+Docker escape	id, docker run + host bind-mount
+
+
+
+                    +---------------------------+
+                    |   Low-priv Linux Shell    |
+                    +---------------------------+
+                                |
+                                v
+           +---------------------------------------------+
+           | Run Automated Enum: linpeas.sh / linenum.sh |
+           +---------------------------------------------+
+                                |
+                                v
+    +---------------------------+-----------------------------+
+    |                           |                             |
+    v                           v                             v
+[SUID Binaries]        [Cron Jobs / Timers]         [Interesting Files]
+- find / -perm -4000   - crontab -l                 - /etc/passwd
+- GTFOBins             - /etc/cron.*                - /etc/shadow
+                       - systemctl list-timers     - *.conf / .bash_history
+                                |
+                                v
++------------------------------+-----------------------------+
+|      Writable or Misconfigured Services/Files             |
+| - Writable SUID binaries                                    |
+| - Service unit files (systemd)                             |
+| - World-writable scripts run by root (cron/systemd)        |
++------------------------------------------------------------+
+                                |
+                                v
++------------------------------+-----------------------------+
+|           PATH / ENV Hijacking Opportunities              |
+| - Scripts or cron jobs that run without full paths        |
+| - PATH=/tmp:<original-path> trick                         |
+| - LD_PRELOAD or LD_LIBRARY_PATH abuse                     |
++------------------------------------------------------------+
+                                |
+                                v
++------------------------------+-----------------------------+
+|              Kernel Exploits / Local Vulns                 |
+| - Check with linux-exploit-suggester.sh                   |
+| - DirtyCow, DirtyPipe, OverlayFS, etc.                    |
+| - Match kernel version from `uname -a`                    |
++------------------------------------------------------------+
+                                |
+                                v
++------------------------------+-----------------------------+
+|          Passwords and SSH Keys in Plaintext              |
+| - grep -r 'password' /                                      |
+| - Find private keys (id_rsa)                               |
+| - Look in web app files, dev folders, user homes          |
++------------------------------------------------------------+
+                                |
+                                v
++------------------------------+-----------------------------+
+|       Docker / LXD Priv Esc (if user in docker group)     |
+| - Check with `id` command                                  |
+| - Abuse with host volume mount / container escape         |
++------------------------------------------------------------+
+                                |
+                                v
+                    +--------------------------+
+                    |   Get root, grab flag 🏁  |
+                    +--------------------------+
