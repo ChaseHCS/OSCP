@@ -1,0 +1,46 @@
+            +----------------------------+
+            |   Can you enumerate users? |
+            +----------------------------+
+                      |
+                      v
+          +------------------------+
+          |   Do you have valid    |
+          |     domain users?      |
+          +------------------------+
+                      |
+          +-----------+-----------+
+          |                       |
+         YES                     NO
+          |                       |
+          v                       v
++------------------+      +-------------------+
+| Try AS-REP       |      | Try anonymous     |
+| Roasting         |<-----| SMB/LDAP/RPC enum |
+| (GetNPUsers)     |      +-------------------+
++------------------+
+          |
+          v
++----------------------------+
+| Any accounts vulnerable?   |
+| (DONT_REQ_PREAUTH flag)    |
++----------------------------+
+          |
+    +-----+------+
+    |            |
+   YES           NO
+    |            |
+    v            v
++----------+  +---------------------------+
+| Crack    |  | Do you have valid creds?  |
+| hashes   |  +---------------------------+
+| (hashcat)|              |
++----------+        +----+----+
+                    |         |
+                   YES        NO
+                    |         |
+                    v         v
+           +--------------------+     +------------------+
+           | Try Kerberoasting  |     | Try spraying     |
+           | (GetUserSPNs.py)   |     | users with creds |
+           +--------------------+     | (CrackMapExec)   |
+                                      +------------------+
