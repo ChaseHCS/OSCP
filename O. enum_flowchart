@@ -1,51 +1,74 @@
-legend
-Service	Tools
-HTTP	gobuster, ffuf, nikto, curl, burp, whatweb
-SMB	enum4linux, smbclient, smbmap, crackmapexec
-LDAP	ldapsearch, GetNPUsers.py
-Kerberos	GetNPUsers.py, GetUserSPNs.py
-SSH	ssh, hydra, nmap -sV
-FTP	ftp, nmap, anonymous login
-RDP	rdesktop, xfreerdp, ncrack
+LEGEND:
+Service  →  Tools
+HTTP     →  gobuster, ffuf, nikto, curl, burp, whatweb
+SMB      →  enum4linux, smbclient, smbmap, crackmapexec
+LDAP     →  ldapsearch, GetNPUsers.py
+Kerberos →  GetNPUsers.py, GetUserSPNs.py
+SSH      →  ssh, hydra, nmap -sV
+FTP      →  ftp, nmap, anonymous login
+RDP      →  rdesktop, xfreerdp, ncrack
+DNS      →  dig, nslookup, dnsenum, ffuf vhost brute
 
-                   +---------------------+
-                   |     Start Recon     |
-                   +---------------------+
+                  +---------------------+
+                  |     Start Recon     |
+                  +---------------------+
                             |
                             v
-             +-----------------------------+
-             | Full TCP Nmap Scan (-p-)    |
-             | + Service/Version Detection |
-             +-----------------------------+
+            +------------------------------+
+            | Full TCP Nmap Scan (-p-)     |
+            | + Service/Version Detection  |
+            +------------------------------+
                             |
                             v
-        +------------------------------------------+
-        | Identify Open Ports / Services           |
-        +------------------------------------------+
+       +-------------------------------------------+
+       | Identify Open Ports / Services            |
+       +-------------------------------------------+
                             |
                             v
-+----------------+   +----------------+   +----------------+
-| Web (80/443)   |   | SMB (445/139)  |   | SSH (22)       |
-+----------------+   +----------------+   +----------------+
-        |                   |                   |
-        v                   v                   v
-+---------------+   +------------------+   +-----------------+
-| Gobuster/FFUF |   | smbclient        |   | Banner grab /   |
-| Nikto         |   | enum4linux       |   | Check SSH login |
-| WhatWeb       |   | smbmap           |   | creds (if found)|
-+---------------+   +------------------+   +-----------------+
-        |                   |
-        v                   v
-+-------------------+   +----------------------+
-| Dir/File Discovery|   | User / Share Enum    |
-| Login pages, CMS  |   | Try anonymous access |
-+-------------------+   +----------------------+
-        |                   |
-        v                   v
-+-------------------------+   +------------------------+
-| Creds in robots.txt or  |   | Check for AS-REP roast |
-| source code / dev files |   | or Kerberoasting       |
-+-------------------------+   +------------------------+
++----------------+  +----------------+  +----------------+  +-------------+
+| Web (80/443)   |  | SMB (445/139)  |  | SSH (22)       |  | DNS (53)    |
++----------------+  +----------------+  +----------------+  +-------------+
+       |                  |                   |                   |
+       v                  v                   v                   v
++---------------+  +------------------+  +-----------------+  +----------------+
+| Gobuster/FFUF |  | smbclient        |  | Banner grab     |  | dig, dnsenum   |
+| Nikto         |  | enum4linux       |  | Check SSH login |  | Subdomain enum |
+| WhatWeb       |  | smbmap           |  | if creds found  |  | VHost brute    |
++---------------+  +------------------+  +-----------------+  +----------------+
+       |
+       v
++----------------------------+
+| Dir/File Discovery         |
+| Login pages, CMS, /api     |
+| Dev panels, .git, backup   |
++----------------------------+
+       |
+       v
++----------------------------+
+| robots.txt, sitemap.xml    |
+| creds in source/dev files  |
+| config.php, .env, .bak     |
++----------------------------+
+       |
+       v
++----------------------------+
+| Tech/CMS Fingerprinting    |
+| WordPress, PHP, Laravel    |
+| Flask, NodeJS, Drupal      |
++----------------------------+
+       |
+       v
++----------------------------+
+| Check for File Uploads     |
+| LFI, RCE, SQLi via forms   |
++----------------------------+
+
+       |                  |
+       v                  v
++--------------------+  +------------------------+
+| Auth portals/login |  | Check for AS-REP roast |
+| Bruteforce, reuse  |  | or Kerberoasting       |
++--------------------+  +------------------------+
 
                             |
                             v
@@ -54,10 +77,10 @@ RDP	rdesktop, xfreerdp, ncrack
            +------------------------------------+
                             |
                             v
-+-------------------+   +-------------------------+
-| FTP - Check for   |   | RDP - Ncrack/BruteForce |
-| anonymous login   |   | or test known creds     |
-+-------------------+   +-------------------------+
++-------------------+   +-------------------------+   +------------------------+
+| FTP - Anon login  |   | RDP - Brute known creds |   | WinRM - crackmapexec   |
+| or hidden files   |   | test with Ncrack        |   | evil-winrm             |
++-------------------+   +-------------------------+   +------------------------+
 
                             |
                             v
@@ -76,5 +99,3 @@ RDP	rdesktop, xfreerdp, ncrack
              +------------------------------------+
              | Move to exploitation/privesc phase |
              +------------------------------------+
-
-
