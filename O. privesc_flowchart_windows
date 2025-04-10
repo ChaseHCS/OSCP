@@ -1,0 +1,64 @@
+legend
+
+Area	Tools / Commands
+Initial Enum	WinPEAS.exe, PowerUp.ps1, Seatbelt.exe
+Privileges	whoami /priv, Get-TokenPrivs.ps1
+Tokens / Impersonation	JuicyPotato, PrintSpoofer, RoguePotato
+Services	sc qc, icacls, Get-Service, schtasks
+File / Script Abuse	accesschk.exe, procmon, icacls
+Credential Hunting	Mimikatz, findstr password, .ps1
+DLL Hijacking	procmon, WinPEAS
+UAC / Reg abuse	AlwaysInstallElevated, reg query
+Kernel exploits	Windows Exploit Suggester, Sherlock.ps1
+ACL / BloodHound	SharpHound, BloodHound GUI
+
+                  +----------------------------+
+                  |  Low-Priv Windows Shell    |
+                  +----------------------------+
+                              |
+                              v
+        +---------------------------------------------+
+        | Run Automated Enum: WinPEAS / PowerUp / Seatbelt |
+        +---------------------------------------------+
+                              |
+                              v
+ +-------------------+    +-------------------------+   +----------------------+
+ | Privileges Check  |    | Services / Scheduled    |   | Interesting Files    |
+ | - whoami /priv    |    | Tasks (schtasks)        |   | - Unattend.xml       |
+ | - SeImpersonate?  |    | - Writable scripts?     |   | - SAM, SYSTEM, .ps1  |
+ +-------------------+    +-------------------------+   +----------------------+
+           |                          |                          |
+           v                          v                          v
+ +-------------------+    +-------------------------+   +----------------------+
+ | Token Impersonation|   | Service / Script Hijack |   | Credential Hunting   |
+ | - Juicy/PrintSpoof |   | - Unquoted paths        |   | - Mimikatz, LAPS     |
+ | - RoguePotato      |   | - Insecure perms        |   | - RunAs credentials  |
+ +-------------------+    +-------------------------+   +----------------------+
+                              |
+                              v
+ +----------------------------+----------------------------+
+ |     Registry / UAC / DLL Hijacking Opportunities        |
+ | - AlwaysInstallElevated                                  |
+ | - Auto-elevating EXEs / run keys                         |
+ | - DLL search order hijack (procmon/WinPEAS)              |
+ +----------------------------------------------------------+
+                              |
+                              v
+ +----------------------------------------------------------+
+ |      Kernel Exploits (e.g., EternalBlue, MS16-032)       |
+ | - Use Windows Exploit Suggester / Sherlock.ps1           |
+ | - Match via systeminfo / winver                          |
+ +----------------------------------------------------------+
+                              |
+                              v
+ +----------------------------------------------------------+
+ |      Enumerate Local Groups / Weak ACLs / Shared Folders |
+ | - net localgroup administrators                          |
+ | - net share / icacls                                     |
+ | - BloodHound for ACL attack paths                        |
+ +----------------------------------------------------------+
+                              |
+                              v
+                +-----------------------------+
+                |   Get SYSTEM, grab flag 🏁   |
+                +-----------------------------+
