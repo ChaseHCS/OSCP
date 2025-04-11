@@ -9,7 +9,7 @@ Basic portscanning methodology is to do a light scan of everyport on machine or 
 autorecon == Runs both the light scan then the aggressive scan automatically. Highly effecient. Highly effective // https://github.com/Tib3rius/AutoRecon
 
 
-ports=$(nmap -Pn -p- --min-rate=1000 -T4 10.10.10.182 | grep ^[0-9] | cut -d '/' -f 1 | tr '\n' ',' | sed s/,$//)
+ports=$(nmap -Pn -p- --min-rate=10000 10.10.10.182 | grep ^[0-9] | cut -d '/' -f 1 | tr '\n' ',' | sed s/,$//)
 nmap -p$ports -Pn -sC -sV 10.10.10.182 == Nice little two liner that does the broad scan then the aggressive scan.
 
 LIGHT BROAD SCANNING TOOLS
