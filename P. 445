@@ -96,3 +96,5 @@ Blackfield: Used rpcclient and enum4linux to enumerate domain users.
 Cascade: Exploited unauthenticated SMB to gather LDAP credentials.
 
 Monteverde: Found valid AD users and escalated via SMB and WinRM.
+
+Certified: Given low level domain user.
