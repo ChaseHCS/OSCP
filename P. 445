@@ -1,5 +1,88 @@
 CHATGPT Response
 
+1A. +----------------------------+
+     | Start with Nmap Scan     |
+     | nmap -p 139,445 -sV      |
+     +----------------------------+
+               |
+               v
+1B. +---------------------------------------------+
+     | Check for SMB Ports (139/445) Open         |
+     +---------------------------------------------+
+               |
+               v
+2A. +----------------------------------+
+     | Run NetExec for Host Overview  |
+     | netexec smb <ip>               |
+     +----------------------------------+
+               |
+               v
+2B. +----------------------------------+
+     | Check for Guest Access to Shares|
+     | netexec smb <ip> -u guest -p '' |
+     +----------------------------------+
+               |
+               v
+3A. +----------------------------+     +----------------------------+
+     | Use smbclient to list     |     | Use smbmap to enumerate    |
+     | smbclient -L //<ip> -N    |     | smbmap -H <ip>             |
+     +----------------------------+     +----------------------------+
+               |                               |
+               v                               v
+3B. +----------------------------+     +----------------------------+
+     | Access and browse shares |     | Check for write access     |
+     | smbclient //<ip>/share -N |     | smbmap -R [share]          |
+     +----------------------------+     +----------------------------+
+
+               |
+               v
+4A. +----------------------------------+
+     | Search for sensitive files      |
+     | manspider / spider_plus module |
+     +----------------------------------+
+               |
+               v
+4B. +----------------------------------------+
+     | Enumerate Users via RID Cycling       |
+     | netexec smb <ip> --rid-brute          |
+     | OR impacket/lookupsid.py              |
+     +----------------------------------------+
+               |
+               v
+4C. +-----------------------------------------+
+     | Dump user accounts with samrdump.py    |
+     | samrdump.py <ip>                       |
+     +-----------------------------------------+
+               |
+               v
+5A. +-----------------------------------------+
+     | (Optional) Use found creds to login    |
+     | netexec smb <ip> -u <user> -p <pass>   |
+     | smbclient, WinRM, evil-winrm, etc.     |
+     +-----------------------------------------+
+
+               |
+               v
+6A. +----------------------------+
+     | Document shares, files,  |
+     | usernames, permissions   |
+     +----------------------------+
+               |
+               v
+6B. +----------------------------+
+     | Pivot to exploitation or |
+     | lateral movement         |
+     +----------------------------+
+
+
+
+
+
+
+
+
+
+
 usage
 
 chmod +x smb_enum.sh
