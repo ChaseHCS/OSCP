@@ -1,0 +1,15 @@
+Shell upgrade script
+
+$ script /dev/null -c bash
+Script started, file is /dev/null
+
+puma@sau:/opt/maltrail$ ^Z
+[1]+  Stopped                 nc -lnvp 443
+
+oxdf@hacky$ stty raw -echo; fg
+nc -lnvp 443
+            reset
+reset: unknown terminal type unknown
+Terminal type? screen
+
+puma@sau:/opt/maltrail$ 
