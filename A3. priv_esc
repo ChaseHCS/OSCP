@@ -151,8 +151,11 @@ Ethical Use: Always ensure you have proper authorization before using Mimikatz o
 
 Use exploited creds on services.
 
+CERTIPY.PY
 
+enumerates AD CS for vuln certs
 
+certipy find -vulnerable -u judith.mader -p judith09 -dc-ip 10.10.11.41 -stdout
 
 
 
