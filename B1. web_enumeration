@@ -1,3 +1,22 @@
 amass == insane web enum tool for real world engagements // https://github.com/owasp-amass/amass
 
 dirsearch == extremely popular web enum dir tool // https://github.com/maurosoria/dirsearch/
+
+Run all of these commands.
+
+FeroxBuster: Highspeed dirbuster
+
+feroxbuster -u http://target.com -x php,html,txt --output out.txt
+
+FFUF: A fast web fuzzer for discovering hidden directories and files.
+
+ffuf -u http://<target_ip>/FUZZ -w /usr/share/wordlists/dirb/common.txt
+
+Nikto: Scan for known vulnerabilities and misconfigurations.​
+
+nikto -h http://<target_ip>
+
+Virtual host fuzzing
+
+ffuf -w /usr/share/wordlists/dns/subdomains-top1million-5000.txt -u http://<target_ip> -H "Host: FUZZ.<target_domain>"
+
