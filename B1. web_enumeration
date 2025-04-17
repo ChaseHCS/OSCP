@@ -2,6 +2,8 @@ amass == insane web enum tool for real world engagements // https://github.com/o
 
 dirsearch == extremely popular web enum dir tool // https://github.com/maurosoria/dirsearch/
 
+YOU NEED TO CONSTANTLY ENUMERATE TECHNOLOGIES USED TO BUILD THE SITE AND CONSTANTLY SEARCH FOR EXPLOITS.
+
 Run all of these commands.
 
 FeroxBuster: Highspeed dirbuster
