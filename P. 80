@@ -8,64 +8,14 @@ CHATGPT Response
 🔍 Step 1: Basic Banner Grab
 Check the HTTP response headers and server banner.
 
-bash
-Copy
-Edit
-curl -I http://<ip>
-Look for:
 
-Server type (Apache, nginx, IIS)
-
-Redirects (Location headers)
-
-Interesting cookies
-
-Hints of a WAF
-
-🔎 Step 2: Run an Nmap HTTP Script Scan
-This pulls banners, titles, headers, and tries to identify any known HTTP services.
-
-bash
-Copy
-Edit
 nmap -p 80 -sV --script=http-title,http-headers,http-enum,http-methods -oN nmap_http.txt <ip>
 Check for:
 
-HTTP methods like PUT or DELETE (can be abused)
 
-Directories or virtual hosts
+Rapidly checks subdomains, headers, tech stack, etc.
 
-Interesting headers like X-Powered-By, Server, or custom ones
-
-🔧 Step 3: Visit in Browser
-Open it in Firefox or Chromium:
-
-cpp
-Copy
-Edit
-http://<ip>
-Look for:
-
-Login pages
-
-File upload features
-
-Forms
-
-CMS (like WordPress, Joomla)
-
-Developer notes, commented-out HTML
-
-Broken links or hidden pages
-
-Use Ctrl+U (view source) and check for:
-
-JS files
-
-Comments with usernames/emails
-
-API endpoints
-
+radar -domain mydomain.com
 
 
 
