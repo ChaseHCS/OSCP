@@ -1,0 +1,3 @@
+1. test for SSRF by
+  start netcat listener on port 80 == nc -lnvp 80
+  input http://<myip>/test
