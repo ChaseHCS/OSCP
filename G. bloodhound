@@ -1,0 +1,75 @@
+enum
+
+bloodhound-python -u USERNAME -p PASSWORD -dc-ip 10.10.10.10 -d domain.local -c All
+
+
+
+gui setup
+
+how do I setup the bloodhound gui
+
+
+ChatGPT said:
+Here's a step-by-step guide to set up the BloodHound GUI on Kali Linux or any other Debian-based distro.
+
+🛠️ 1. Install Dependencies
+You need Neo4j (database backend) and BloodHound GUI (frontend).
+
+bash
+Copy
+Edit
+sudo apt update
+sudo apt install bloodhound
+This will install both Neo4j and BloodHound.
+
+🧱 2. Start the Neo4j Database
+bash
+Copy
+Edit
+sudo neo4j console
+Default port: 7474
+
+Default username/password: neo4j / neo4j
+
+You'll be prompted to set a new password the first time.
+
+Keep this terminal open while using BloodHound.
+
+🧠 3. Launch BloodHound GUI
+In a new terminal, run:
+
+bash
+Copy
+Edit
+bloodhound
+Connect to bolt://localhost:7687
+
+Use the username: neo4j
+
+Use the password you set earlier
+
+📤 4. Import BloodHound-python Output
+Click the upload icon in the top right corner of BloodHound
+
+Select your .json files (from BloodHound-python output)
+
+BloodHound will ingest and analyze the data
+
+🔎 5. Use Built-in Queries
+Once data is loaded, use prebuilt queries like:
+
+"Shortest path to domain admin"
+
+"Users with admin rights on computers"
+
+"Kerberoastable accounts"
+
+You can also use Cypher queries to build your own analysis paths.
+
+Let me know if you want a cheat sheet of Cypher queries or if you run into any issues with Neo4j startup.
+
+
+
+
+
+
