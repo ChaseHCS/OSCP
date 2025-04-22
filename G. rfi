@@ -1,0 +1,3 @@
+1. check for rfi when you see an index.php?
+  put this after index.php?view=C:\temp
+    if blocked try view=c:temp
