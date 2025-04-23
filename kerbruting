@@ -1,0 +1,5 @@
+kerbruting is a nice way to enum domain users when smb isnt open.
+
+1. for user enum use == kerbrute userenum -d DOMAIN.local usernames.txt --dc IP
+
+2. for password spraying use == kerbrute bruteuser -d DOMAIN.local --dc IP usernames.txt passwords.txt
