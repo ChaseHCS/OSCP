@@ -1,0 +1,7 @@
+1. Use commands like unzip or tar to unzip files.
+
+2. If files are password protected, make a hash of the file using zip2john == zip2john winrm_backup.zip > winrm_backup.zip.hash
+
+3. Then crach the hash using john == john  --wordlist=/usr/share/wordlists/rockyou.txt winrm_backup.zip.hash
+
+4. Then unzip using cracked passwd.
