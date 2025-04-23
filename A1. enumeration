@@ -8,27 +8,9 @@ netexec smb 10.10.11.42 --generate-hosts-file /etc/hosts
 
 PORT SCANNING
 
-Basic portscanning methodology is to do a light scan of everyport on machine or network first. Then continue with an aggressive scan on the open ports.
+nmap -p- --min-rate 10000 10.10.11.42 -oN ini
 
-autorecon == Runs both the light scan then the aggressive scan automatically. Highly effecient. Highly effective // https://github.com/Tib3rius/AutoRecon
-
-
-ports=$(nmap -Pn -p- --min-rate=10000 10.10.10.182 | grep ^[0-9] | cut -d '/' -f 1 | tr '\n' ',' | sed s/,$//)
-nmap -p$ports -Pn -sC -sV 10.10.10.182 == Nice little two liner that does the broad scan then the aggressive scan.
-
-LIGHT BROAD SCANNING TOOLS
-
-rustscan -a <Target IP> == Scans all 65k ports in 3 seconds. // https://github.com/bee-san/RustScan
-
-masscan -p1-65535 <target-ip> --rate=1000 -e tun0 == Another fast but older scanner // https://github.com/zan8in/masscan
-
-scanless -s all <target-ip> == anonymous port scanner // 
-
-naabu == fast and lightweight port scanner written in go // https://github.com/projectdiscovery/naabu
-
-AGGRESSIVE TARGETED SCANNING TOOLS
-
-nmap -sC --script vuln -sV -p (port,port,ports) <10.10.10.3>
+nmap -p 22,80 -sCV 10.10.10.10 -oN agg
 
 SERVICE EXPLOIT SEARCHING
 
