@@ -1,8 +1,3 @@
-Enumerate AD CS if:
-You have domain creds ✅
+After obtaining valid domain creds, it is always a good idea to check (adcs) actice directory domain services.
 
-You want to escalate or move laterally ✅
-
-You see any signs of CA infra ✅
-
-You want stealthy persistence ✅
+1. first,
