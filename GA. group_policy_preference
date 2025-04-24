@@ -1,0 +1,5 @@
+Whenever a new Group Policy Preference (GPP) is created, there’s an xml file created in the SYSVOL share with that config data, including any passwords associated with the GPP. For security, Microsoft AES encrypts the password before it’s stored as cpassword. But then Microsoft published the key on MSDN!
+
+If you find an xml with userName and cpassword fields you are dealing with a GPP xml.
+
+1. run this command to decrypt == gpp-decrypt edBSHOwhZLTjt/QS9FeIcJ83mjWA98gw9guKOhJOdcqh+ZGMeXOsQbCpZ3xUjTLfCuNH8pG5aSVYdYw/NglVmQ
