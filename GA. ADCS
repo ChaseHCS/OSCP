@@ -1,4 +1,4 @@
-After obtaining valid domain creds, it is always a good idea to check (adcs) actice directory domain services.
+After obtaining valid domain creds, it is always a good idea to check (adcs) actice directory certificate services.
 
 1. first, try running this command with valid domain creds == certipy find -vulnerable -u judith.mader -p judith09 -dc-ip <domainip> -stdout
 
