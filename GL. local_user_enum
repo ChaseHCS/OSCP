@@ -1,0 +1,7 @@
+with local user on a linux box, try these commands to enumerate.
+
+1. check sudo powers with == sudo -l
+
+2. check running processes == ps auxww
+
+3. check setuid binaries == find /-perm -400 2>/dev/null
