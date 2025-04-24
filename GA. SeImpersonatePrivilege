@@ -1,0 +1,9 @@
+After enumming a windows box if your user has this priv enabled it is vulnerable to a potato attack.
+
+1. Download one of the following attacks to the machine and run it
+
+  printspoofer
+
+  juicypotato
+
+  sweetpotato
