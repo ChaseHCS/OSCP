@@ -7,3 +7,7 @@ nxc smb <ip> --rid-brute
 TRY THESE IF ALL ELSE FAILS
 
 smbclient.py 'absolute.htb/d.klay:Darkmoonsky248girl@dc.absolute.htb' -k -no-pass
+
+samrdump.py [domain]/[user]:[pass]@[ip]
+
+nmap --script smb-vuln* -p 139,445 [ip]
