@@ -2,6 +2,8 @@ PRE-SCANNING ACTIVITIES
 
 echo "10.10.10.4 legacy.htb" | sudo tee -a /etc/hosts == Add IP to hosts files to make enum more easy.
 
+TRY RUSTSCAN
+
 OR
 
 netexec smb 10.10.11.42 --generate-hosts-file /etc/hosts
