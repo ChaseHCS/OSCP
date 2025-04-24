@@ -1,20 +1,11 @@
-amass == insane web enum tool for real world engagements // https://github.com/owasp-amass/amass
-
-dirsearch == extremely popular web enum dir tool // https://github.com/maurosoria/dirsearch/
 
 YOU NEED TO CONSTANTLY ENUMERATE TECHNOLOGIES USED TO BUILD THE SITE AND CONSTANTLY SEARCH FOR EXPLOITS.
 
 Run all of these commands.
 
-FeroxBuster: Highspeed dirbuster
-
 feroxbuster -u http://target.com -x php,html,txt --output out.txt
 
-FFUF: A fast web fuzzer for discovering hidden directories and files.
-
-ffuf -u http://<target_ip>/FUZZ -w /usr/share/wordlists/dirb/common.txt
-
-Nikto: Scan for known vulnerabilities and misconfigurations.​
+ffuf -u http://10.10.11.47 -H "Host: FUZZ.linkvortex.htb" -w /opt/SecLists/Discovery/DNS/subdomains-top1million-20000.txt -ac​
 
 nikto -h http://<target_ip>
 
