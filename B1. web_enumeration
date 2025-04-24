@@ -9,6 +9,8 @@ ffuf -u http://10.10.11.47 -H "Host: FUZZ.linkvortex.htb" -w /opt/SecLists/Disco
 
 nikto -h http://<target_ip>
 
+also a good idea to get http response headers using burp
+
 Virtual host fuzzing
 
 ffuf -w /usr/share/wordlists/dns/subdomains-top1million-5000.txt -u http://<target_ip> -H "Host: FUZZ.<target_domain>"
