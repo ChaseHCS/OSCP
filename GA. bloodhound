@@ -1,8 +1,8 @@
 enum
 
-bloodhound-python -u USERNAME -p PASSWORD -dc-ip 10.10.10.10 -d domain.local -c All
+bloodhound-python -u USERNAME -p PASSWORD -dc-ip 10.10.10.10 -d domain.local -ns <ip> -c All --zip 
 
-
+bloodhound-python -u 'judith.mader' -p 'judith09' -c all -d certified.htb -ns 10.10.11.41 --zip
 
 gui setup
 
