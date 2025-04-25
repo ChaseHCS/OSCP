@@ -5,3 +5,5 @@ after getting a low level shell on a windows box, try these commands.
 2. net user legaccy
 
 3. PS C:\Users\legacyy\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadLine> ls
+
+4. reg.exe query "HKLM\software\microsoft\windows nt\currentversion\winlogon"
