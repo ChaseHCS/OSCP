@@ -19,3 +19,7 @@ Shell upgrade script
             kali@kali$ stty raw -echo; fg
 
 upgraded@shell:/opt/maltrail$ 
+
+SYNC TIME WITH BOX
+
+rdate -u <ip>
