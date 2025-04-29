@@ -7,3 +7,5 @@ after getting a low level shell on a windows box, try these commands.
 3. PS C:\Users\legacyy\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadLine> ls
 
 4. reg.exe query "HKLM\software\microsoft\windows nt\currentversion\winlogon"
+
+5. cmdkey /list -- finds cached creds -- https://0xdf.gitlab.io/2019/03/02/htb-access.html
