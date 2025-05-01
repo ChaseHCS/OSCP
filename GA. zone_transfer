@@ -1,1 +1,8 @@
+dig @10.10.10.10 corp.local AXFR
 
+IF SUCCESSFUL
+
+
+host1.corp.local.   3600  IN  A  10.10.10.11
+host2.corp.local.   3600  IN  A  10.10.10.12
+...
