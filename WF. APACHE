@@ -1,0 +1,29 @@
+Apache is probaby the most common web framework you will come across.
+
+1. Run Feroxbuster & ffuf with any found technologies like .bak
+
+2. Dump .htaccess and .htpasswd for creds
+
+  curl http://<target-ip>/.htaccess
+  curl http://<target-ip>/.htpasswd
+
+3. Check for .git repos
+
+  curl http://<target-ip>/.git/HEAD
+
+  git-dumper.py http://<target-ip>/.git/ ./repo
+
+
+
+
+CHATGPT TABLE OF COMMON APACHE VULNS
+
+| Vulnerability                     | Description                                    | Exploitation                                       |
+| --------------------------------- | ---------------------------------------------- | -------------------------------------------------- |
+| **Directory Listing Enabled**     | No `index.html` and `Options -Indexes` not set | Browse directories directly                        |
+| **.htaccess Misconfig**           | Misused access controls or directory rewriting | Bypass or escalate by altering upload paths        |
+| **.git Folder Exposed**           | Developers leave `.git/` accessible            | Dump source with `git-dumper.py`                   |
+| **Backup Files (.bak, .old, \~)** | Poor cleanup — expose config or credentials    | Brute force or find via `ffuf`/`gobuster`          |
+| **Server-Side Includes (SSI)**    | Misconfigured `.shtml` pages                   | Inject commands in HTML comment blocks             |
+| **Userdir Enabled**               | `/~user/` exposes user content                 | Leak of sensitive user files                       |
+| **Outdated Modules / Versions**   | Public CVEs for specific Apache versions       | Exploit known RCEs (e.g., Apache Struts, mod\_cgi) |
