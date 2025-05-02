@@ -1,0 +1,15 @@
+For websites good to run some inital enum scripts before looking for more in-depth vulns.
+
+1. HTTP Headers - Tells you about the sites tech stack
+
+curl -I http://<IP>
+
+2.  NMAP scripts - More info on tech stack
+
+nmap -p 80,443 -sV --script http-title,http-headers <IP>
+
+3. Feroxbuster - brute force subdirectories
+
+4. FFUF - brute force subdomains
+
+ ffuf -u http://<ip> -H "Host: FUZZ.forest.htb" -w /opt/SecLists/Discovery/DNS/subdomains-top1million-20000.txt -mc all -ac
