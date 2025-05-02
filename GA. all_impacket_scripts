@@ -1,0 +1,47 @@
+| Script             | Purpose                                                                                      |
+| ------------------ | -------------------------------------------------------------------------------------------- |
+| **secretsdump.py** | Dump password hashes (SAM, NTDS.dit), LSA secrets, cached creds — **post-exploitation gold** |
+| **GetNPUsers.py**  | Perform **AS-REP roasting** (no-preauth user hash extraction)                                |
+| **GetUserSPNs.py** | Perform **Kerberoasting** — extract service ticket hashes for cracking                       |
+| **wmiexec.py**     | Execute remote commands via WMI (good for stealthy lateral movement)                         |
+| **smbexec.py**     | Similar to `psexec`, but uses SMB file shares and service creation                           |
+| **psexec.py**      | Full remote shell via SMB — requires admin creds (louder)                                    |
+| **atexec.py**      | Run commands via Task Scheduler service — good when `psexec`/`wmiexec` are blocked           |
+| **rpcdump.py**     | Enumerate available RPC interfaces (useful for checking enabled RPC services)                |
+| **lookupsid.py**   | Enumerate users/groups from RID values — works with null sessions                            |
+| **ticketer.py**    | Craft custom **Kerberos tickets** (TGTs, Golden Tickets) using `krbtgt` hash                 |
+| **gettgt.py**      | Request a **TGT** using a valid password or NTLM hash — needed for Pass-the-Ticket           |
+| **getST.py**       | Request **service tickets** (TGS) using a TGT for lateral movement or delegation abuse       |
+| **addcomputer.py** | Add a machine to the domain — abuse if you have `AddComputer` rights                         |
+| **dcomexec.py**    | Lateral movement using **DCOM objects** — useful in internal networks                        |
+| **rdp\_check.py**  | Check if **RDP is enabled** on a host                                                        |
+| **netview\.py**    | List shares and sessions on remote SMB hosts                                                 |
+| **smbclient.py**   | Interactive SMB shell — upload/download files, browse shares                                 |
+
+
+WORKFLOW
+
+Recommended Core Workflow:
+🧭 Recon:
+
+lookupsid.py, rpcdump.py, netview.py
+
+🔓 Initial Access / Cred Attacks:
+
+GetNPUsers.py (AS-REP roasting)
+
+GetUserSPNs.py (Kerberoasting)
+
+🧪 Post-Exploitation / Lateral Movement:
+
+secretsdump.py (hash dump)
+
+psexec.py, wmiexec.py, smbexec.py, atexec.py, dcomexec.py
+
+🎭 Kerberos Abuse:
+
+gettgt.py, getST.py, ticketer.py
+
+🔧 Abuse Misconfigs:
+
+addcomputer.py (when AddComputer rights found)
