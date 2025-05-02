@@ -1,0 +1,23 @@
+IIS is Microsoft’s web server. IIS often pairs with Active Directory, Kerberos, and Windows Auth (NTLM) — perfect for testing Windows-specific web attacks.
+
+1. Run feroxbuster and ffuf with the aspx flags.
+
+
+
+
+
+
+
+
+CHATGPT SUMMARY OF COMMON VULNS
+
+| Vulnerability               | Exploitation Path                       |
+| --------------------------- | --------------------------------------- |
+| WebDAV PUT/PROPFIND         | Upload `.aspx` web shell                |
+| File Upload Bypass          | Upload reverse shell, bypass filters    |
+| ViewState RCE               | Modify `__VIEWSTATE` to inject payloads |
+| Stack Traces                | Leak usernames, internal paths          |
+| Shortname Disclosure        | Fuzz for files using `~1`               |
+| .config Disclosure          | Dump creds or connection strings        |
+| Verbose Error Pages         | Find exposed debug routes               |
+| Unquoted Paths (post-shell) | Privesc by hijacking service startup    |
