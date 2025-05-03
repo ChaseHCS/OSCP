@@ -10,8 +10,10 @@ nmap -p 80,443 -sV --script http-title,http-headers <IP>
 
 3. Feroxbuster - brute force subdirectories
 
+feroxbuster -u http://boardlight.htb -x php -o fbust
+
 4. FFUF - brute force subdomains
 
- ffuf -u http://<ip> -H "Host: FUZZ.forest.htb" -w /opt/SecLists/Discovery/DNS/subdomains-top1million-20000.txt -mc all -ac
+ffuf -u http://boardlight.htb -H "Host: FUZZ.boardlight.htb" -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-20000.txt -mc all -ac -o ffuf
 
 5. Lastly, closely survey every technology used on the sight and lookup potential vulnerabilities. This can save A LOT of time.
