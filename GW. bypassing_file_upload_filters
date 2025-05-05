@@ -1,0 +1,9 @@
+WHEN A SITE LETS YOU UPLOAD A PICTURE .PNG , .JPEG, etc. Try these tricks to bypass the filter.
+
+First try sending lots of requests via burp to see where the filter is blocking your file.
+
+Here are some techniques.
+
+If filter only allows files ending in .PNG, .JPEG, etc. Try adding a double file extension.
+
+If the Content-Type header on image must be an image. Try opening up imagine in vim and adding code into it.
