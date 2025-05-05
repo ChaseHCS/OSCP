@@ -1,6 +1,21 @@
 ldap is always worth taking a look at on DCs, this script could be good to get users
 
-1. run this command with creds to get users and descriptions == nxc ldap CICADA-DC -u michael.wrightson -p 'Cicada$M6Corpb*@Lp#nZp!8' --users
+Try enumming users with null auth.
+
+1. nxc ldap box-dc --usuers
+
+Try getting naming contexts
+
+2. ldapsearch -h 10.10.10.248 -x -s base namingcontexts
+
+And then rerun command with found naming contexts.
+
+3. ldapsearch -h 10.10.10.248 -x -b "DC=intelligence,DC=htb"
+
+
+. run this command with creds to get users and descriptions == nxc ldap CICADA-DC -u michael.wrightson -p 'Cicada$M6Corpb*@Lp#nZp!8' --users
+
+
 
 UTILIZE THE BLOODYAD TOOL
 
