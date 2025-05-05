@@ -5,3 +5,5 @@ with local user on a linux box, try these commands to enumerate.
 2. check running processes == ps auxww
 
 3. check setuid binaries == find /-perm -400 2>/dev/null
+
+  Look for processes that you can run as sudo and see if you can insert malicious code directly into the process OR into one of the processes that the code calls.
