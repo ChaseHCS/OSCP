@@ -1,3 +1,9 @@
 Try login with creds.
 
 rpcclient secura -U 'secura.xyz/Eric.Wallows'
+
+If you can access rpc continue below for enum.
+
+  get valid users = enumdomusers
+
+  
