@@ -2,4 +2,4 @@
 
 2. Also try seeing if you can upload a file to a directory outside of intended directory using ../../../../
 
-  If you can do this try overwriting ssh files things like that.
+  If you can do this try overwriting ssh files things like that. For ex, "filename=../../../../../../../../../../../root/.ssh/authorized_keys"
