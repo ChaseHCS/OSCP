@@ -1,0 +1,11 @@
+If a website allows commands to be entered, try command injection.
+
+1. Open POST in burpsuite. Look for where the command is located in the POST.
+
+2. Find out where the filter is since it is likely filtered to only one command.
+
+3. Attempt using a encoded delimiter such as "%3B" to add a new cmd. For ex, "git%3Bifconfig"
+
+4. The following cmd can tell us if the code is running in cmd or pwsh. (dir 2>&1 *`|echo CMD);&<# rem #>echo PowerShell
+
+5. Next run any cmd you please.
