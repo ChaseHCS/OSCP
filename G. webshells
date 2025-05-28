@@ -1,0 +1,5 @@
+Kali has common webshells natively installed.
+
+You can find them in this path.
+
+  1. ls -la /usr/share/webshells
