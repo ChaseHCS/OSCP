@@ -136,6 +136,15 @@ Start-Service <pwnableservice> OR restart machine
 pwnage.
 
 
+SCHTASKS
+
+schtasks /query /fo LIST /v -- Finds Scheduled tasks.
+
+icacls C:\Users\steve\Pictures\BackendCacheCleanup.exe -- Again see if you have write access.
+
+Once again replace the binary with the malicious add user binary and wait for schtask to run.
+
+
 
 POWERUP
 
