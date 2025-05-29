@@ -42,6 +42,14 @@ env -- Sometimes sysadmins store credentials in environments.
 
 cat .bashrc -- Can potentially find variables that are set during launch of shell.
 
+watch -n 1 "ps -aux | grep pass" -- watch running processes, look for cred dump.
+
+sudo tcpdump -i lo -A | grep "pass" -- extremely nice to run with sudo privs. will dump creds.
+
+
+
+INSECURE FILE PERMISSIONS
+
 
 
 
