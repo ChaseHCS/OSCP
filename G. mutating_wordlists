@@ -1,0 +1,3 @@
+echo \$1 > demo.rule -- Appends 1 to the end of the wordlist
+
+hashcat -r demo.rule --stdout demo.txt
