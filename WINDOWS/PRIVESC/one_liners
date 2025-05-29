@@ -1,3 +1,39 @@
+SITUATIONAL AWARENESS
+
+whoami /groups
+
+Get-LocalUser
+
+Get-LocalGroup
+
+Get-LocalGroupMember adminteam
+
+systeminfo
+
+ipconfig /all
+
+routeprint
+
+Get-ItemProperty "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*" | select displayname
+
+Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*" | select displayname
+
+Get-Process
+
+MISC
+
 1. Finds keepass files.
 
 Get-ChildItem -Path C:\ -Include *.kdbx -File -Recurse -ErrorAction SilentlyContinue
+
+2. If you find XAMPP
+
+Get-ChildItem -Path C:\xampp -Include *.txt,*.ini -File -Recurse -ErrorAction SilentlyContinue
+
+3. Finds all listed file types
+
+Get-ChildItem -Path C:\Users\dave\ -Include *.txt,*.pdf,*.xls,*.xlsx,*.doc,*.docx -File -Recurse -ErrorAction SilentlyContinue
+
+4. Find PS history path and then lists it.
+
+(Get-PSReadlineOption).HistorySavePath THEN type "<pathfrompreviouscmd>"
