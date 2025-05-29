@@ -1,0 +1,36 @@
+ENUMERATION AND SITUATIONAL AWARENESS
+
+uname -a
+
+hostname
+
+cat /etc/passwd
+
+ps aux -- system processes
+
+ip a -- similar to ipconfig /all
+
+routel -- similar to routeprint
+
+ss -anp -- shows open ports
+
+cat /etc/iptables/rules.v4 -- might be able to find a hidden open port.
+
+ls -lah /etc/cron* -- lists all cronjobs
+
+sudo crontab -l -- Crontab is used by sysadmins to add their own cronjobs
+
+dpkg -l -- find all installed applications
+
+find / -writable -type d 2>/dev/null -- finds any file your user can write to
+
+find / -perm -u=s -type f 2>/dev/null -- finds files that anyone can run with sudo privs
+
+
+1. Download and run linpeas for quick low hanging fruit with lots of information.
+
+
+
+
+INSPECTING USER TRAILS
+
