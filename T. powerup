@@ -1,6 +1,6 @@
 POWERUP
 
-Powerup is able to automate most windows privesc techniques through a .ps1 module.
+Powerup is able to automate most windows privesc techniques through a .ps1 module. -- https://github.com/PowerShellMafia/PowerSploit/blob/master/Privesc/PowerUp.ps1
 
 1. SERVICE ENUM ABUSE
 
