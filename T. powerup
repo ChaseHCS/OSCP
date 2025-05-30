@@ -1,0 +1,31 @@
+POWERUP
+
+Powerup is able to automate most windows privesc techniques through a .ps1 module.
+
+1. SERVICE ENUM ABUSE
+
+Test-ServiceDaclPermission          -   tests one or more passed services or service names against a given permission set
+Get-UnquotedService                 -   returns services with unquoted paths that also have a space in the name
+Get-ModifiableServiceFile           -   returns services where the current user can write to the service binary path or its config
+Get-ModifiableService               -   returns services the current user can modify
+Get-ServiceDetail                   -   returns detailed information about a specified service
+Set-ServiceBinaryPath               -   sets the binary path for a service to a specified value
+Invoke-ServiceAbuse                 -   modifies a vulnerable service to create a local admin or execute a custom command
+Write-ServiceBinary                 -   writes out a patched C# service binary that adds a local admin or executes a custom command
+Install-ServiceBinary               -   replaces a service binary with one that adds a local admin or executes a custom command
+Restore-ServiceBinary               -   restores a replaced service binary with the original executable
+
+2. DLL ABUSE
+
+Find-ProcessDLLHijack               -   finds potential DLL hijacking opportunities for currently running processes
+Find-PathDLLHijack                  -   finds service %PATH% DLL hijacking opportunities
+Write-HijackDll                     -   writes out a hijackable DLL
+
+3. MISC USE/SCHTASKS
+
+Get-ModifiableScheduledTaskFile     -   find schtasks with modifiable target files
+Get-UnattendedInstallFile           -   finds remaining unattended installation files
+Get-Webconfig                       -   checks for any encrypted web.config strings
+Get-ApplicationHost                 -   checks for encrypted application pool and virtual directory passwords
+Get-SiteListPassword                -   retrieves the plaintext passwords for any found McAfee's SiteList.xml files
+Get-CachedGPPPassword               -   checks for passwords in cached Group Policy Preferences files
