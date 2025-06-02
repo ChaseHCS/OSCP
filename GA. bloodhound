@@ -1,3 +1,18 @@
+certutil sharp.exe into pwned box
+
+DOESNT WORK IF LDAP IS DISABLED.
+
+cd to /opt/bloodhound
+
+docker-compose  up
+
+when done
+
+docker-compose stop
+
+
+
+
 https://www.youtube.com/watch?v=NFfHUYAyGN8
 
 
