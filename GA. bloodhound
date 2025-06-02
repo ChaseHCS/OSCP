@@ -1,3 +1,6 @@
+https://www.youtube.com/watch?v=NFfHUYAyGN8
+
+
 enum
 
 bloodhound-python -u USERNAME -p PASSWORD -dc-ip 10.10.10.10 -d domain.local -ns <ip> -c All --zip 
