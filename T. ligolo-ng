@@ -1,2 +1,24 @@
 https://www.youtube.com/watch?v=DM1B8S80EvQ
 Download agent and proxy for ligolo-nc for proxy and agent.
+
+LOCAL
+
+./proxy -selfcert
+
+AGENT
+
+ag.exe -connect 192.168.45.191:11601 -ignore-cert
+
+LOCAL
+
+session
+
+1
+
+OPEN NEW LOCAL SHELL
+
+ip route add 10.10.93.0/24 dev ligolo
+
+LIGOLO TERMINAL
+
+start
