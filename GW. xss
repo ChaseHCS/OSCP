@@ -1,1 +1,3 @@
 If you are able to make an account and sign in. Most likely is XSS.
+
+Scan site to see if it is vuln to a potential xss.
