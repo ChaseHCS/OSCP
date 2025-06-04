@@ -2,6 +2,10 @@ NXC is an awesome tool for all boxes. Currently supports enum over SMB, LDAP, WI
 
 Documentation for enum over each port is in the specific ports file.
 
+
+ rm -f ~/.nxc/workspaces/default/smb.db -- IF NOT WORKING
+
+
 Here are is a short breakdown and use cases for each.
 
 SMB
