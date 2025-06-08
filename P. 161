@@ -1,0 +1,8 @@
+First UDP scan the target.
+
+Following finds strings to input into the next cmd.
+
+1. snmpbrute.py -t 10.10.10.10 -f /usr/share/seclists/Discovery/SNMP/common-snmp-community-strings.txt
+
+2. snmpwalk -v2c -c <STRING> 10.10.10.10
+
